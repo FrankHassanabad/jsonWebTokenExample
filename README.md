@@ -13,6 +13,7 @@ npm install
 node app.js
 ```
 
+
 Output should be something like the following:
 
 ```
@@ -41,3 +42,13 @@ Decoded token from public key is:
   "iat": 1442777680092
 }
 ```
+
+Check out the shell script in the keys directory to generate new RSA private/public keys.
+Play can play with the different sizes of RSA (2048 vs 4096 for example) to see the different
+length differences of the token.
+
+Don't deploy the checked-in private key to a server (obviously).  
+
+This example shows how you could use a RSA public/private key to generate encrypted tokens
+from an Auth Server for something like a OAuth2 Bearer token so that you can validate that
+the tokens did come from the Auth Server with just public keys.
