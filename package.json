@@ -1,0 +1,16 @@
+{
+  "name": "json-web-token-example",
+  "version": "1.0.0",
+  "description": "Example of using a JWT library to generate tokens ",
+  "main": "app.js",
+  "dependencies": {
+    "jsonwebtoken": "^5.0.5",
+    "node-uuid": "^1.4.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Frank Hassanabad",
+  "license": "MIT"
+}
