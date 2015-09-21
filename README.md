@@ -2,7 +2,11 @@ jsonWebTokenExample
 ==================
 
 Example of using JWT (JSON Web Tokens) to generate an access token as if it
-came from an Auth server such as a OAuth2 provider.
+came from an Auth server such as a OAuth2 provider.  This uses a public/private
+key pair based on a Elliptic Curve Asymmetric algorithm.  The private key is
+used to encrypt tokens on the Auth server and the public key is available for download
+by any service needing to verify tokens on a continuous basis without wanting to
+make additional roundtrips to the Auth server.
 
 More information on [JWT](https://tools.ietf.org/html/rfc7515#section-3.3),
 [Elliptic Curve](https://wiki.openssl.org/index.php/Command_Line_Elliptic_Curve_Operations),
