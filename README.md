@@ -1,8 +1,15 @@
 jsonWebTokenExample
 ==================
 
-Example of using JWT (JSON Web Tokens) to generate a mock access token as if it
-came from an Auth server such as an OAuth2 provider.
+Example of using JWT (JSON Web Tokens) to generate an access token as if it
+came from an Auth server such as a OAuth2 provider.
+
+More information on [JWT](https://tools.ietf.org/html/rfc7515#section-3.3),
+[Elliptic Curve](https://wiki.openssl.org/index.php/Command_Line_Elliptic_Curve_Operations),
+[RSA](https://wiki.openssl.org/index.php/Command_Line_Utilities#rsa_.2F_genrsa) private/public keys,
+[OAuth2](https://tools.ietf.org/html/rfc6749), and
+[node web token](https://github.com/auth0/node-jsonwebtoken)
+
 
 Install and Run
 
@@ -20,35 +27,22 @@ Output should be something like the following:
 Reading private key of: keys/private_key.pem
 Reading public key of: keys/public_key.pem
 
-Encoding JWT token of:
-{
-  "jti": "fb5a33b6-4486-4861-91e9-7e0adc69c042",
-  "iss": "String of your Auth Server which generated this",
-  "aud": "Client ID of who this is intended for",
-  "exp": 1442777896092,
-  "iat": 1442777680092
-}
+Generated token from private key (size 375):
 
-Generated token from private key (size 631):
-
-eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJqdGkiOiJmYjVhMzNiNi00NDg2LTQ4NjEtOTFlOS03ZTBhZGM2OWMwNDIiLCJpc3MiOiJTdHJpbmcgb2YgeW91ciBBdXRoIFNlcnZlciB3aGljaCBnZW5lcmF0ZWQgdGhpcyIsImF1ZCI6IkNsaWVudCBJRCBvZiB3aG8gdGhpcyBpcyBpbnRlbmRlZCBmb3IiLCJleHAiOjE0NDI3Nzc4OTYwOTIsImlhdCI6MTQ0Mjc3NzY4MDA5Mn0.kKbARkgiLWoBgJqQnaT0MEW_HGftTGCTyl2mGsqM066d5bRSv513yw3osA21VBW-qnOHFxriOOHDURq2ZgnHo2IEPvQyfv0vI8EPJDM6g8xi_TLvP-ssjQbPSmYiiImP61Ng1F5scuvdgTSdKth9Iwp0CrSg9Q4fwgDYJXKZ_4D29W-KqbJ98Abcl-t6VBk54ECvg2WahxzovBQrAK4icPmboehrlo--aagmh3puwC3hnVeqttkNDUGtEgvvvsiR5VCIDGlM2mwffNaqcRxNq-A-PfvnCIrov-w0Xox0LPijJHZnmxV7vB7nGSmGcZlUSNoZHl8FhQ68SpJHRE4c8A
+eyJ0eXAiOiJKV1QiLCJhbGciOiJFUzI1NiJ9.eyJqdGkiOiI4ODQ0NGFjNS1jZGI3LTRkMjctYjIyMS1kZTMyZDY0Zjc5YWQiLCJpc3MiOiJTdHJpbmcgb2YgeW91ciBBdXRoIFNlcnZlciB3aGljaCBnZW5lcmF0ZWQgdGhpcyIsImF1ZCI6IkNsaWVudCBJRCBvZiB3aG8gdGhpcyBpcyBpbnRlbmRlZCBmb3IiLCJleHAiOjE0NDI3OTY0NDc3NTcsImlhdCI6MTQ0Mjc5NjIzMTc1N30.59813RD2iKWcL5av9GgW600ubf22EDo8CmtEcWqMXLkHy-ivX5VU5Ainpg8IvvSC0TPqKvbRcImiVOcYXidwFg
 
 Decoded token from public key is:
 {
-  "jti": "fb5a33b6-4486-4861-91e9-7e0adc69c042",
+  "jti": "88444ac5-cdb7-4d27-b221-de32d64f79ad",
   "iss": "String of your Auth Server which generated this",
   "aud": "Client ID of who this is intended for",
-  "exp": 1442777896092,
-  "iat": 1442777680092
+  "exp": 1442796447757,
+  "iat": 1442796231757
 }
 ```
 
-Check out the shell script in the keys directory to generate new RSA private/public keys.
-Play can play with the different sizes of RSA (2048 vs 4096 for example) to see the different
-length differences of the token.
+Check out the shell script in the keys directory to generate new elliptic curve or RSA
+private/public keys.  You can play with the different elliptic curve types or sizes of
+RSA to see the different length differences of the tokens.
 
-Don't deploy the checked-in private key to a server (obviously).  
-
-This example shows how you could use a RSA public/private key to generate encrypted tokens
-from an Auth Server for something like a OAuth2 Bearer token so that you can validate that
-the tokens did come from the Auth Server with just public keys.
+Don't deploy any checked-in private key to a server (obviously).  

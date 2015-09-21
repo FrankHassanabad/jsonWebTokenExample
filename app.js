@@ -26,15 +26,18 @@ var jwtToEncode = {
   exp: hourFromNowEpoch,
   iat: nowEpoch
 }
-console.log("Encoding JWT token of:\n" + JSON.stringify(jwtToEncode, null, 2), '\n');
-var signedJwtToken = jwt.sign(jwtToEncode, privateKey, { algorithm: 'RS256' });
+
+// Change this to RS256 if you use that key type
+// See: https://github.com/auth0/node-jsonwebtoken#algorithms-supported
+var algorithmType = 'ES256'
+var signedJwtToken = jwt.sign(jwtToEncode, privateKey, { algorithm: algorithmType });
 
 // Write the token out to the console
 console.log("Generated token from private key (size " + signedJwtToken.length + "):\n\n" + signedJwtToken + "\n")
 
 // Verify the token with the public key.  This part is done by clients with
 // downloaded public keys
-jwt.verify(signedJwtToken, publicKey, { algorithms: ['RS256'] }, function(err, decoded) {
+jwt.verify(signedJwtToken, publicKey, { algorithms: [algorithmType] }, function(err, decoded) {
   if(err)
     console.log("Error decoding:", err.message)
   else
